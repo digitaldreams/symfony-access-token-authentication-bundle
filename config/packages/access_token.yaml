@@ -1,0 +1,8 @@
+access_token:
+  jwt:
+    user_entity: 'App\Entity\User'
+    secret: '%env(resolve:JWT_SECRET)%'
+    issuer: '%env(resolve:JWT_ISSUER)%'
+    algorithm: '%env(resolve:JWT_ALGORITHM)%'
+    key: '%env(resolve:JWT_KEY)%'
+    expire_at: '%env(resolve:JWT_EXPIRE_AT)%'

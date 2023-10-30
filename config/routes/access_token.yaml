@@ -1,0 +1,4 @@
+access_token:
+  resource: '@AccessTokenBundle/src/Controller/'
+  prefix: 'api'
+  type: attribute
