@@ -37,4 +37,8 @@ class AccessTokenRepository extends ServiceEntityRepository
         $this->getEntityManager()->flush();
     }
 
+    public function revokeAccessToken(int $userId)
+    {
+    }
+
 }
