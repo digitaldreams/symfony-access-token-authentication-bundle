@@ -66,10 +66,11 @@ class LoginController
 {
     public function __construct(private  CreateAccessTokenService $accessTokenService) {}
     
-    public function login(Request $request): AccessToken
+    public function login(Request $request): 
     {
         //Write your logic
-      return  $this->accessTokenService->execute(new UserCredentialsRequest('YourEmail@example.com','YourPassword'))
+        //@var AccessToken $accessToken
+      $accessToken=  $this->accessTokenService->execute(new UserCredentialsRequest('YourEmail@example.com','YourPassword'))
     }
 }
 ```
