@@ -41,8 +41,40 @@ security:
 
 ```
 
-__Enjoy!!!__ 
 
+### Calling the Login API
+ ```javascript
+fetch('/api/login',{
+    body: {
+        username: 'john@example.com',
+        password: 'YourPassword'
+    }
+})
+```
+
+You can create your own login route. Just remove package route and use `AccessToken\Services\CreateAccessTokenService`
+
+```php
+namespace App\Controller
+
+use AccessToken\Entity\AccessToken;
+use AccessToken\Services\CreateAccessTokenService;
+use AccessToken\Services\UserCredentialsRequest;
+use Symfony\Component\HttpFoundation\Request;
+
+class LoginController
+{
+    public function __construct(private  CreateAccessTokenService $accessTokenService) {}
+    
+    public function login(Request $request): AccessToken
+    {
+        //Write your logic
+      return  $this->accessTokenService->execute(new UserCredentialsRequest('YourEmail@example.com','YourPassword'))
+    }
+}
+```
+
+__Enjoy!!!__
 
 ## Implement User verification and active feature
 It will never generate a access token is user need to be email verified or inactive.
