@@ -1,8 +1,21 @@
 {
+  "name": "digitaldream/symfony-access-token",
+  "description": "Symfony Access Token Authentication Bundle.",
   "type": "symfony-bundle",
+  "homepage": "https://github.com/digitaldreams/symfony-access-token-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tuhin Bepari",
+      "email": "digitaldreams40@gmail.com",
+      "homepage": "http://www.tuhinbepari.com",
+      "role": "Developer"
+    }
+  ],
   "require": {
     "php": "^8.2",
     "symfony/framework-bundle": "6.3.*",
+    "symfony/security-bundle": "6.3.*",
     "firebase/php-jwt": "^6.9"
   },
   "autoload": {

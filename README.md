@@ -1,7 +1,7 @@
 # Symfony Access Token Bundle
 ## Installation
 ```
-composer require digitaldreams/symfony-access-token
+composer require digitaldream/symfony-access-token
 ```
 ## Setup
 **Step 1:**
@@ -44,7 +44,7 @@ security:
 __Enjoy!!!__ 
 
 
-## Implement Interface
+## Implement User verification and active feature
 It will never generate a access token is user need to be email verified or inactive.
 Simply implement the `AccessToken\Entity\TokenUserInterface` on your `User` Entity like below
 
@@ -55,13 +55,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TokenUs
     
     public function isVerified(): ?bool
     {
-       // return null is you do have this functionality
+       // return null if you don't have this functionality
         return true;
     }
 
     public function isActive(): ?bool
     {
-        // return null is you do have this functionality
+        // return null if you don't have this functionality
         return true;
     }
 
@@ -77,4 +77,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TokenUs
     }
 }
 ```
-## features
+
+### Revoke Access Token
+If you want to revoke all of the access token for a particular user then fire `AccessToken\Events\RevokeAccessTokensEvent`
+
+```php
+namespace App\Controller;
+
+use AccessToken\Events\RevokeAccessTokensEvent;
+use \Symfony\Component\EventDispatcher\EventDispatcherInterface;
+
+class SomeController {
+ public function someAction(EventDispatcherInterface $dispatcher){
+    //Do something with the User. E.g block or inactive or subscription expired.
+    $dispatcher->dispatch(new RevokeAccessTokensEvent(1),RevokeAccessTokensEvent::NAME)
+    }
+}
+
+```
